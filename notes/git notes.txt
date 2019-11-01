@@ -56,6 +56,13 @@ $ git remote add origin https://github.com/DrakeFramework/AgileIntPPMTool.git
 
 dnelson@9V205V1 MINGW64 /c/Users/dnelson/ideaProjects/PPMToolUdemyTutorial (master)
 $ git push -u origin master
+error: unable to read askpass response from 'C:/Program Files/Git/mingw64/libexec/git-core/git-gui--askpass'
+Password for 'https://Foursand1Eye@github.com': remote: Invalid username or password.
+fatal: Authentication failed for 'https://github.com/DrakeFramework/AgileIntPPMTool.git/'
+
+
+dnelson@9V205V1 MINGW64 /c/Users/dnelson/ideaProjects/PPMToolUdemyTutorial (master)
+$ git push -u origin master
 Enumerating objects: 27, done.
 Counting objects: 100% (27/27), done.
 Delta compression using up to 8 threads
@@ -69,6 +76,10 @@ Branch 'master' set up to track remote branch 'master' from 'origin'.
 dnelson@9V205V1 MINGW64 /c/Users/dnelson/ideaProjects/PPMToolUdemyTutorial (master)
 $ git branch
 * master
+
+dnelson@9V205V1 MINGW64 /c/Users/dnelson/ideaProjects/PPMToolUdemyTutorial (master)
+$ bit branch branch0
+bash: bit: command not found
 
 dnelson@9V205V1 MINGW64 /c/Users/dnelson/ideaProjects/PPMToolUdemyTutorial (master)
 $ git branch branch0
@@ -88,4 +99,71 @@ $ git branch
   master
 
 dnelson@9V205V1 MINGW64 /c/Users/dnelson/ideaProjects/PPMToolUdemyTutorial (branch0)
-$
+$ git add .
+
+dnelson@9V205V1 MINGW64 /c/Users/dnelson/ideaProjects/PPMToolUdemyTutorial (branch0)
+$ git commit -m "20191101 project object"
+[branch0 88267b9] 20191101 project object
+ Committer: Drake Nelson <dnelson@KMMFG.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 91 insertions(+)
+ create mode 100644 notes/git notes.txt
+
+dnelson@9V205V1 MINGW64 /c/Users/dnelson/ideaProjects/PPMToolUdemyTutorial (branch0)
+$ git push
+fatal: The current branch branch0 has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin branch0
+
+
+dnelson@9V205V1 MINGW64 /c/Users/dnelson/ideaProjects/PPMToolUdemyTutorial (branch0)
+$  git push --set-upstream origin branch0
+remote: Invalid username or password.
+fatal: Authentication failed for 'https://github.com/DrakeFramework/AgileIntPPMTool.git/'
+
+dnelson@9V205V1 MINGW64 /c/Users/dnelson/ideaProjects/PPMToolUdemyTutorial (branch0)
+$  git push --set-upstream origin branch0
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 1.35 KiB | 1.35 MiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0)
+remote:
+remote: Create a pull request for 'branch0' on GitHub by visiting:
+remote:      https://github.com/DrakeFramework/AgileIntPPMTool/pull/new/branch0
+remote:
+To https://github.com/DrakeFramework/AgileIntPPMTool.git
+ * [new branch]      branch0 -> branch0
+Branch 'branch0' set up to track remote branch 'branch0' from 'origin'.
+
+dnelson@9V205V1 MINGW64 /c/Users/dnelson/ideaProjects/PPMToolUdemyTutorial (branch0)
+$ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+
+dnelson@9V205V1 MINGW64 /c/Users/dnelson/ideaProjects/PPMToolUdemyTutorial (master)
+$ git merge branch0
+Updating c72d1b2..88267b9
+Fast-forward
+ notes/git notes.txt | 91 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 91 insertions(+)
+ create mode 100644 notes/git notes.txt
+
+dnelson@9V205V1 MINGW64 /c/Users/dnelson/ideaProjects/PPMToolUdemyTutorial (master)
+$ git push
+Total 0 (delta 0), reused 0 (delta 0)
+To https://github.com/DrakeFramework/AgileIntPPMTool.git
+   c72d1b2..88267b9  master -> master
