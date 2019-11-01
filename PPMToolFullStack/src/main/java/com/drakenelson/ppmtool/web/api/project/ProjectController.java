@@ -1,4 +1,4 @@
-package com.drakenelson.ppmtool.web;
+package com.drakenelson.ppmtool.web.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,8 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.drakenelson.ppmtool.domain.Project;
 import com.drakenelson.ppmtool.services.ProjectService;
 
+import lombok.Data;
+
+/**
+ * Standard controller setup to handle rest requests for json http requests concerning projects
+ */
 @RestController
 @RequestMapping("/api/project")
+@Data
 public class ProjectController {
 
     @Autowired
