@@ -20,13 +20,16 @@ public class Project {
 
     private String projectName;
     private String projectIdentifier;
-    private String discription;
+    private String description;
     private Date startDate;
     private Date endDate;
 
     private Date createdAt;
     private Date updatedAt;
 
+    public Project(){
+
+    }
     @PrePersist
     protected void onCreate() {
         this.createdAt = new Date();
