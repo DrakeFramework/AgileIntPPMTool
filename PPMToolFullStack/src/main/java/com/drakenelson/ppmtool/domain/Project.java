@@ -28,7 +28,7 @@ public class Project {
     private Date updatedAt;
 
     @PrePersist
-    protected void onCreate(){
+    protected void onCreate() {
         this.createdAt = new Date();
     }
 
