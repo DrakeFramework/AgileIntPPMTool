@@ -22,6 +22,8 @@ public class ProjectController {
     public ResponseEntity<Project> createNewProject(@RequestBody Project project) {
         //Logic
         Project newProject = projectService.saveOrUpdateProject(project);
-        return new ResponseEntity<Project>(project, HttpStatus.CREATED);
+        return new ResponseEntity<Project>(newProject, HttpStatus.CREATED);
     }
+
+
 }
