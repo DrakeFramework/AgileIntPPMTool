@@ -11,9 +11,17 @@ import javax.persistence.PreUpdate;
 
 import lombok.Data;
 
+/**
+ * H2 is a pretty cool tool.  it allows for a database to be kept tied solely to the runtime
+ * By implementing this I can quickly test and develop a jpa application without setting up
+ * the actual database.
+ *
+ * How did people live before Lombok
+ */
 @Entity
 @Data
 public class Project {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,9 +35,6 @@ public class Project {
     private Date createdAt;
     private Date updatedAt;
 
-    public Project(){
-
-    }
     @PrePersist
     protected void onCreate() {
         this.createdAt = new Date();
