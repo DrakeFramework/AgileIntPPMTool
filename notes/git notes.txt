@@ -1,0 +1,91 @@
+dnelson@9V205V1 MINGW64 /c/Users/dnelson/ideaProjects/PPMToolUdemyTutorial
+$ git init
+Initialized empty Git repository in C:/Users/dnelson/ideaProjects/PPMToolUdemyTutorial/.git/
+
+dnelson@9V205V1 MINGW64 /c/Users/dnelson/ideaProjects/PPMToolUdemyTutorial (master)
+$ git add .
+warning: LF will be replaced by CRLF in PPMToolFullStack/.gitignore.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in PPMToolFullStack/.mvn/wrapper/MavenWrapperDownloader.java.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in PPMToolFullStack/.mvn/wrapper/maven-wrapper.properties.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in PPMToolFullStack/mvnw.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in PPMToolFullStack/mvnw.cmd.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in PPMToolFullStack/pom.xml.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in PPMToolFullStack/src/main/java/com/drakenelson/ppmtool/PpmtoolApplication.java.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in PPMToolFullStack/src/main/resources/application.properties.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in PPMToolFullStack/src/test/java/com/drakenelson/ppmtool/PpmtoolApplicationTests.java.
+The file will have its original line endings in your working directory
+
+dnelson@9V205V1 MINGW64 /c/Users/dnelson/ideaProjects/PPMToolUdemyTutorial (master)
+$ git commit -m "first commit"
+[master (root-commit) c72d1b2] first commit
+ Committer: Drake Nelson <dnelson@KMMFG.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 10 files changed, 725 insertions(+)
+ create mode 100644 PPMToolFullStack/.gitignore
+ create mode 100644 PPMToolFullStack/.mvn/wrapper/MavenWrapperDownloader.java
+ create mode 100644 PPMToolFullStack/.mvn/wrapper/maven-wrapper.jar
+ create mode 100644 PPMToolFullStack/.mvn/wrapper/maven-wrapper.properties
+ create mode 100644 PPMToolFullStack/mvnw
+ create mode 100644 PPMToolFullStack/mvnw.cmd
+ create mode 100644 PPMToolFullStack/pom.xml
+ create mode 100644 PPMToolFullStack/src/main/java/com/drakenelson/ppmtool/PpmtoolApplication.java
+ create mode 100644 PPMToolFullStack/src/main/resources/application.properties
+ create mode 100644 PPMToolFullStack/src/test/java/com/drakenelson/ppmtool/PpmtoolApplicationTests.java
+
+dnelson@9V205V1 MINGW64 /c/Users/dnelson/ideaProjects/PPMToolUdemyTutorial (master)
+$ git remote add origin https://github.com/DrakeFramework/AgileIntPPMTool.git
+
+dnelson@9V205V1 MINGW64 /c/Users/dnelson/ideaProjects/PPMToolUdemyTutorial (master)
+$ git push -u origin master
+Enumerating objects: 27, done.
+Counting objects: 100% (27/27), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (17/17), done.
+Writing objects: 100% (27/27), 49.91 KiB | 6.24 MiB/s, done.
+Total 27 (delta 0), reused 0 (delta 0)
+To https://github.com/DrakeFramework/AgileIntPPMTool.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+
+dnelson@9V205V1 MINGW64 /c/Users/dnelson/ideaProjects/PPMToolUdemyTutorial (master)
+$ git branch
+* master
+
+dnelson@9V205V1 MINGW64 /c/Users/dnelson/ideaProjects/PPMToolUdemyTutorial (master)
+$ git branch branch0
+
+dnelson@9V205V1 MINGW64 /c/Users/dnelson/ideaProjects/PPMToolUdemyTutorial (master)
+$ git branch
+  branch0
+* master
+
+dnelson@9V205V1 MINGW64 /c/Users/dnelson/ideaProjects/PPMToolUdemyTutorial (master)
+$ git checkout branch0
+Switched to branch 'branch0'
+
+dnelson@9V205V1 MINGW64 /c/Users/dnelson/ideaProjects/PPMToolUdemyTutorial (branch0)
+$ git branch
+* branch0
+  master
+
+dnelson@9V205V1 MINGW64 /c/Users/dnelson/ideaProjects/PPMToolUdemyTutorial (branch0)
+$
