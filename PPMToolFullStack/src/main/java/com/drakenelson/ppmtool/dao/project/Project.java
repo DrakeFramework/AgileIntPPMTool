@@ -1,4 +1,4 @@
-package com.drakenelson.ppmtool.domain;
+package com.drakenelson.ppmtool.dao.project;
 
 import java.util.Date;
 

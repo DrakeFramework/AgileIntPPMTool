@@ -1,10 +1,10 @@
-package com.drakenelson.ppmtool.services;
+package com.drakenelson.ppmtool.services.api.project;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.drakenelson.ppmtool.domain.Project;
-import com.drakenelson.ppmtool.repository.ProjectRepository;
+import com.drakenelson.ppmtool.dao.project.Project;
+import com.drakenelson.ppmtool.dao.project.ProjectRepository;
 
 import lombok.Data;
 

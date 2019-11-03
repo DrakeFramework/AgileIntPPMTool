@@ -1,9 +1,7 @@
-package com.drakenelson.ppmtool.repository;
+package com.drakenelson.ppmtool.dao.project;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-
-import com.drakenelson.ppmtool.domain.Project;
 
 /**
  * standard fare repo interface
