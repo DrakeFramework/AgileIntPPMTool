@@ -51,6 +51,7 @@ public class ProjectController {
             //return httpstatus 400 with a body string
             return new ResponseEntity<String>("Invalid Project Object", HttpStatus.BAD_REQUEST);
         }
+        
         //Logic
         Project newProject = projectService.saveOrUpdateProject(project);
         //return httpstatus 201
