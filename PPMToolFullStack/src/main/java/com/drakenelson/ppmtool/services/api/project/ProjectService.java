@@ -21,17 +21,47 @@ public class ProjectService {
     @Autowired
     private ProjectRepository projectRepository;
 
+    /**
+     * This method implements the logic for saving or updating a project object from the project controller
+     * @param project the project object to be persisted to the database
+     * @return the project object to be returned
+     *  - Note the thrown exception will intercept this call and return projectIdExceptionResponse object instead
+     */
     public Project saveOrUpdateProject(Project project) {
+        Project resultProject = null;
+
         //validation
         try {
+            //convert the project identifier to upper case
             project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
-            return projectRepository.save(project);
+            //set the result project to the result of the save operation
+            resultProject = projectRepository.save(project);
         } catch (Exception e) {
+            //if the project repository threw an exception from the validation then route to the exception response
             throw new ProjectIdException("Project Id '" + project.getProjectIdentifier().toUpperCase() + "' already exists");
         }
 
-        //Logic
-
+        //return the result if the exception wasn't thrown
+        return resultProject;
     }
 
+    /**
+     * this is the findById method for use with projects based on the unique identifier
+     * @param projectId the project Identifier passed in through the URL
+     * @return  a project object that can be returned in the controller as json
+     */
+    public Project findProjectByIdentifier(String projectId) {
+
+        //find the project through the repository crud handler
+        Project project = projectRepository.findByProjectIdentifier(projectId.toUpperCase());
+
+        // if the project isn't found through the project id
+        if (project == null) {
+            //throw exception to return a projectIdExceptionResponse instead
+            throw new ProjectIdException("Project with ID '" + projectId.toUpperCase() + "' Does Not Exist");
+        }
+
+        //return the project object
+        return project;
+    }
 }

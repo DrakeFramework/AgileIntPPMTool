@@ -7,10 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.drakenelson.ppmtool.dao.project.Project;
 import com.drakenelson.ppmtool.services.api.project.ProjectService;
@@ -62,5 +59,19 @@ public class ProjectController {
         return new ResponseEntity<Project>(project, HttpStatus.CREATED);
     }
 
+    /**
+     * this is the read portion of the cRud handler the mapping from project service allows for the find from the repo
+     * object
+     *
+     * @param projectId must match getMapping var
+     * @return json result for the project
+     */
+    @GetMapping("/{projectId}")
+    public ResponseEntity<?> getProjectById(@PathVariable String projectId) {
+        //use the service to route to the repo not the controller
+        Project project = projectService.findProjectByIdentifier(projectId);
+        //return the relevant project as a json response entity with status 200
+        return new ResponseEntity<Project>(project, HttpStatus.OK);
+    }
 
 }

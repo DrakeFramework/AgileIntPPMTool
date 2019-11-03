@@ -26,13 +26,13 @@ public class ProjectIdExceptionHandler extends ResponseEntityExceptionHandler {
      * this method is the handler for exceptions
      * @param ex        the exception for project Id
      * @param request   the web request
-     * @return
+     * @return response entity json object
      */
     @ExceptionHandler
     public final ResponseEntity<Object> handleProjectIdException(ProjectIdException ex, WebRequest request ){
         // this is the response from the exception
         ProjectIdExceptionResponse response = new ProjectIdExceptionResponse(ex.getMessage());
-        // this is the return of a bad response (400)
+        // this is the return of a bad response (400) it will only be bad request because it's an exception handler
         return new ResponseEntity(response, HttpStatus.BAD_REQUEST);
     }
 

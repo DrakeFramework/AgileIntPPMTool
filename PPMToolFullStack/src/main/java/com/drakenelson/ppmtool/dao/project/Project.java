@@ -26,11 +26,6 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    /**
-     * the NotBlank annotation allows for validation on entity fields
-     */
-    @NotBlank(message = "Project Name is Required")
-    private String projectName;
 
     /**
      * the size annotation allows validation on the string length
@@ -42,6 +37,11 @@ public class Project {
     @Column(updatable=false, unique=true)
     private String projectIdentifier;
 
+    /**
+     * the NotBlank annotation allows for validation on entity fields
+     */
+    @NotBlank(message = "Project Name is Required")
+    private String projectName;
     @NotBlank(message="Description is required")
     private String description;
 
