@@ -2,13 +2,11 @@ package com.drakenelson.ppmtool.domain;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 /**
@@ -25,14 +23,38 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    /**
+     * the NotBlank annotation allows for validation on entity fields
+     */
+    @NotBlank(message = "Project Name is Required")
     private String projectName;
+
+    /**
+     * the size annotation allows validation on the string length
+     * the column allows for database table interaction validation in this case we cannot update and must be unique
+     */
+    @NotBlank(message = "Project Identifier is Required")
+    @Size(min=4, max=5, message ="Please use 4-5 characters")
+    @Column(updatable=false, unique=true)
     private String projectIdentifier;
+    
+    @NotBlank(message="Description is required")
     private String description;
+
+    /**
+     * the json format allows automatic formatting of json results
+     */
+    @JsonFormat(pattern="yyyy-mm-dd")
     private Date startDate;
+
+    @JsonFormat(pattern="yyyy-mm-dd")
     private Date endDate;
 
+
+    @JsonFormat(pattern="yyyy-mm-dd")
     private Date createdAt;
+
+    @JsonFormat(pattern="yyyy-mm-dd")
     private Date updatedAt;
 
     @PrePersist
@@ -44,4 +66,8 @@ public class Project {
     protected void onUpDate() {
         this.updatedAt = new Date();
     }
+
+
+
+
 }
