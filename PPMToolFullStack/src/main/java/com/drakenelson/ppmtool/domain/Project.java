@@ -17,7 +17,7 @@ import lombok.Data;
  * How did people live before Lombok
  *
  * the annotation validations will return 500 errors to input json that breaks the validation rules
- * 
+ *
  */
 @Entity
 @Data
