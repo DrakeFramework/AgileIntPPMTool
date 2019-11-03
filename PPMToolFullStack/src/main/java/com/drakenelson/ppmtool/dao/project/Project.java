@@ -38,6 +38,7 @@ public class Project {
      */
     @NotBlank(message = "Project Identifier is Required")
     @Size(min=4, max=5, message ="Please use 4-5 characters")
+    //@Column validation happens after the validation has been completed. at database input timing
     @Column(updatable=false, unique=true)
     private String projectIdentifier;
 
@@ -49,7 +50,6 @@ public class Project {
      */
     @JsonFormat(pattern="yyyy-mm-dd")
     private Date startDate;
-
     @JsonFormat(pattern="yyyy-mm-dd")
     private Date endDate;
     @JsonFormat(pattern="yyyy-mm-dd")
@@ -66,8 +66,4 @@ public class Project {
     protected void onUpDate() {
         this.updatedAt = new Date();
     }
-
-
-
-
 }

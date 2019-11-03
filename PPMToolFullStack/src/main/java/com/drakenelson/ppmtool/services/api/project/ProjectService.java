@@ -1,5 +1,6 @@
 package com.drakenelson.ppmtool.services.api.project;
 
+import com.drakenelson.ppmtool.exceptions.api.project.ProjectIdException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,8 +22,16 @@ public class ProjectService {
     private ProjectRepository projectRepository;
 
     public Project saveOrUpdateProject(Project project) {
+        //validation
+        try {
+            project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
+            return projectRepository.save(project);
+        } catch (Exception e) {
+            throw new ProjectIdException("Project Id '" + project.getProjectIdentifier().toUpperCase() + "' already exists");
+        }
+
         //Logic
-        return projectRepository.save(project);
+
     }
 
 }
