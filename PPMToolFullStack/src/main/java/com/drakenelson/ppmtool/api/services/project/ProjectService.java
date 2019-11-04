@@ -28,7 +28,7 @@ public class ProjectService {
      *  - Note the thrown exception will intercept this call and return projectIdExceptionResponse object instead
      */
     public Project saveOrUpdateProject(Project project) {
-        Project resultProject = null;
+        Project resultProject;
 
         //validation
         try {

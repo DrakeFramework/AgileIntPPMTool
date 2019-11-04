@@ -11,7 +11,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 /**
  * this class is used as a controller for exceptions regarding project Id
- *
+ * the basic purpose is to route the exception to a new response - ProjectIdExceptionResponse
  */
 //controller advice helps break away from controllers that are exception specific
 //allows global exception handling for all exceptions wired here
@@ -31,7 +31,7 @@ public class ProjectIdExceptionHandler extends ResponseEntityExceptionHandler {
         // this is the response from the exception
         ProjectIdExceptionResponse response = new ProjectIdExceptionResponse(ex.getMessage());
         // this is the return of a bad response (400) it will only be bad request because it's an exception handler
-        return new ResponseEntity(response, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<Object>(response, HttpStatus.BAD_REQUEST);
     }
 
 }
