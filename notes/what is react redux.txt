@@ -62,8 +62,11 @@ missing dependencies  - bring them in (make sure in the correct directory)
 $ npm install bootstrap
 $ npm install jquery
 $ npm install --save-dev @fortawesome/fontawesome-free
+$ npm install react-router-dom
+	(if this doesnt work force install 4.1.3)
 
-
+hopefully i can pull this
+should be fun
 
 
 
