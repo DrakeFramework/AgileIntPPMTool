@@ -76,4 +76,20 @@ public class ProjectService {
     public Iterable<Project> findAllProjects() {
         return projectRepository.findAll();
     }
+
+    /**
+     * use the standard crud repository delete method to delete by id
+     * @param projectId the unique identifier for project
+     */
+    public void deleteProjectByIdentifier(String projectId) {
+        //first step is to try and find the project
+        Project project = projectRepository.findByProjectIdentifier(projectId.toUpperCase());
+        //handle when a project ID is not found
+        if (project == null) {
+            //use standard project id exception
+            throw new ProjectIdException("Cannot delete project "+projectId+" because it does not exist");
+        }
+        //use the standard delete method from crudRepo
+        projectRepository.delete(project);
+    }
 }

@@ -1,6 +1,7 @@
 package com.drakenelson.ppmtool.api.web.project;
 
 import com.drakenelson.ppmtool.api.services.ValidationErrorService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpStatus;
@@ -76,9 +77,26 @@ public class ProjectController {
         return new ResponseEntity<Project>(project, HttpStatus.OK);
     }
 
+    /**
+     * get a list of all projects
+     *
+     * @return json iterable list of projects
+     */
     @GetMapping("/all")
-    public Iterable<Project> getAllProjects(){
+    public Iterable<Project> getAllProjects() {
         return projectService.findAllProjects();
     }
 
+    /**
+     * this can be accessed by a delete mapping via rest
+     * @param projectId identifier
+     * @return a string that tells whether it worked
+     */
+    @DeleteMapping("/{projectId}")
+    public ResponseEntity<?> deleteProject(@PathVariable String projectId) {
+        projectService.deleteProjectByIdentifier(projectId);
+        return new ResponseEntity<String>("Project With Id: '" + projectId + "' Was Deleted", HttpStatus.OK);
+    }
+
+    
 }
