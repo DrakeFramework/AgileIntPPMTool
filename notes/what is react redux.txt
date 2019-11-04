@@ -27,6 +27,20 @@ src - app.js is where we set up routes and logic for what will render to element
 	
 package.json is like the pom.xml listing dependencies and scripts to run on start
 
+ npm start
+    Starts the development server.
+
+  npm run build
+    Bundles the app into static files for production.
+
+  npm test
+    Starts the test runner.
+
+  npm run eject
+    Removes this tool and copies build dependencies, configuration files
+    and scripts into the app directory. If you do this, you can’t go back!
+
+
 run npm start from terminal in the client directory to run the react app (app.js)
 C:\Users\dnelson\ideaProjects\PPMToolUdemyTutorial\ppmtool-react-client>npm start
 
@@ -39,6 +53,11 @@ create a js file "Dashboard.js" in this example
 
 install react dev tools and redux devtools
 create a folder under components for the project components
+
+missing dependencies  - bring them in (make sure in the correct directory)
+$ npm install bootstrap
+$ npm install jquery
+
 
 
 
