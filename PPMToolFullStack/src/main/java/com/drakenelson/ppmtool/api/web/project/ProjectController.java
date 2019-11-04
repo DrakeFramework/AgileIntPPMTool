@@ -42,13 +42,18 @@ public class ProjectController {
      * a post http request comes in to the /api/project url
      * adding the @Valid annotation to the request body tells the mapping to perform the validation
      *
+     * By passing this with a value for "id" the database primary key the JPA will signal the object
+     * for update rather than insert.  This works because the first part of the crud "save" operation
+     * is to check if exists by the primary key but by passing a null primary key a match is never found
+     * and it defaults to insert.
+     *
      * @param project json input object
      * @param result  a binding result is a result that shows if there are errors
      * @return json return object
      * this was setup as a generic so that we can return strings on failed validation
      */
     @PostMapping("")
-    public ResponseEntity<?> createNewProject(@Valid @RequestBody Project project, BindingResult result) {
+    public ResponseEntity<?> saveOrUpdateProject(@Valid @RequestBody Project project, BindingResult result) {
 
         //this can check for the 400s set up on the domain object
         ResponseEntity<?> errorMap = validationErrorService.mapValidationService(result);
@@ -100,6 +105,5 @@ public class ProjectController {
         String strResponse = "Project With Id: '" + projectId + "' Was Deleted";
         return new ResponseEntity<String>(strResponse, HttpStatus.OK);
     }
-
 
 }

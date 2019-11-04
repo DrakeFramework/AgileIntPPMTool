@@ -34,8 +34,10 @@ public class ProjectService {
 
         //validation
         try {
-            //convert the project identifier to upper case
-            project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
+            //get the project id from the project (uppercase)
+            String strProjectId = project.getProjectIdentifier().toUpperCase();
+            project.setProjectIdentifier(strProjectId);
+
             //set the result project to the result of the save operation
             resultProject = projectRepository.save(project);
         } catch (Exception e) {
@@ -92,4 +94,5 @@ public class ProjectService {
         //use the standard delete method from crudRepo
         projectRepository.delete(project);
     }
+
 }
