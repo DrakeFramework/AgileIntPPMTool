@@ -57,6 +57,8 @@ create a folder under components for the project components
 missing dependencies  - bring them in (make sure in the correct directory)
 $ npm install bootstrap
 $ npm install jquery
+$ npm install --save-dev @fortawesome/fontawesome-free
+
 
 
 

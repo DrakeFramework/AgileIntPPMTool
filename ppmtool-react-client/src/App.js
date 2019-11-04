@@ -3,6 +3,8 @@ import logo from "./logo.svg";
 import "./App.css";
 import Header from "./components/Layout/Header";
 import Dashboard from "./components/Dashboard";
+//note that it does not start with package identifier
+//this is how packages can be imported from npm_modules
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
