@@ -3,7 +3,11 @@ react is a js library that just makes it easy to quickly make ui
 redux provides a way to store the application state like using a JWT token
 redux can pass on token to the back end application by keeping state on the client side
 
-
+first install node
+then install the create-react-app script using git bash
+$ npm install -g create-react-app
+create a new react app in the repo root (this takes a long time the first time)
+$ create-react-app ppmtool-react-client
 
 
 
