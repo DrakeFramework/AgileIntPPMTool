@@ -1,3 +1,7 @@
+******************************************************************
+need to go through this guide https://githowto.com/setup
+******************************************************************
+
 react is a js library that just makes it easy to quickly make ui
 
 redux provides a way to store the application state like using a JWT token
