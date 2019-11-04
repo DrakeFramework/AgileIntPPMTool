@@ -3,11 +3,47 @@ react is a js library that just makes it easy to quickly make ui
 redux provides a way to store the application state like using a JWT token
 redux can pass on token to the back end application by keeping state on the client side
 
+
+***********************************************************
+---react 											    ---
+***********************************************************
+
 first install node
 then install the create-react-app script using git bash
 $ npm install -g create-react-app
 create a new react app in the repo root (this takes a long time the first time)
 $ create-react-app ppmtool-react-client
+
+leave node modules alone
+
+public - index.html is the entry point for the application
+the dif id root is where the react application will live
+	<div id="root"></div>
+	
+src - index.js renders the main app to the main element index.html to #root
+
+src - app.js is where we set up routes and logic for what will render to element 
+	index.js tell index.html to render what is specified in app.js
+	
+package.json is like the pom.xml listing dependencies and scripts to run on start
+
+run npm start from terminal in the client directory to run the react app (app.js)
+C:\Users\dnelson\ideaProjects\PPMToolUdemyTutorial\ppmtool-react-client>npm start
+
+saving the app.js file automatically causes a reload of the page.
+***********************************************************
+---react tutorials can be found at https://reactjs.org/ ---
+***********************************************************
+first create package components in the source folder 
+create a js file "Dashboard.js" in this example
+
+install react dev tools and redux devtools
+create a folder under components for the project components
+
+
+
+
+
 
 
 
