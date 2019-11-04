@@ -1,4 +1,4 @@
-package com.drakenelson.ppmtool.services;
+package com.drakenelson.ppmtool.api.services;
 
 import lombok.Data;
 import org.springframework.http.HttpStatus;

@@ -1,6 +1,6 @@
-package com.drakenelson.ppmtool.web.api.project;
+package com.drakenelson.ppmtool.api.web.project;
 
-import com.drakenelson.ppmtool.services.ValidationErrorService;
+import com.drakenelson.ppmtool.api.services.ValidationErrorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpStatus;
@@ -10,7 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import com.drakenelson.ppmtool.dao.project.Project;
-import com.drakenelson.ppmtool.services.api.project.ProjectService;
+import com.drakenelson.ppmtool.api.services.project.ProjectService;
 
 import lombok.Data;
 
@@ -24,6 +24,8 @@ import javax.validation.Valid;
  * it seems to me a request scope would be appropriate for this
  */
 @RestController
+//this is the mapping from the hosted directory localhost:8080xxxxxxx test tomcat will be the location from which
+// the war was extracted
 @RequestMapping("/api/project")
 @Controller
 @Scope("request")

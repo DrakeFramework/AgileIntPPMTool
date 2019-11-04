@@ -1,6 +1,6 @@
-package com.drakenelson.ppmtool.services.api.project;
+package com.drakenelson.ppmtool.api.services.project;
 
-import com.drakenelson.ppmtool.exceptions.api.project.ProjectIdException;
+import com.drakenelson.ppmtool.api.exceptions.project.ProjectIdException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.drakenelson.ppmtool.exceptions.api.project;
+package com.drakenelson.ppmtool.api.exceptions.project;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

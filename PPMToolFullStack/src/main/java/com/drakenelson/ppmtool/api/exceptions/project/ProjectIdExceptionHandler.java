@@ -1,7 +1,5 @@
-package com.drakenelson.ppmtool.exceptions.api.project;
+package com.drakenelson.ppmtool.api.exceptions.project;
 
-import com.drakenelson.ppmtool.exceptions.api.project.ProjectIdException;
-import com.drakenelson.ppmtool.exceptions.api.project.ProjectIdExceptionResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
