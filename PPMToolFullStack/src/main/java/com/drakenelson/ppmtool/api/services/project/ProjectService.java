@@ -1,6 +1,7 @@
 package com.drakenelson.ppmtool.api.services.project;
 
 import com.drakenelson.ppmtool.api.exceptions.project.ProjectIdException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,9 +24,10 @@ public class ProjectService {
 
     /**
      * This method implements the logic for saving or updating a project object from the project controller
+     *
      * @param project the project object to be persisted to the database
      * @return the project object to be returned
-     *  - Note the thrown exception will intercept this call and return projectIdExceptionResponse object instead
+     * - Note the thrown exception will intercept this call and return projectIdExceptionResponse object instead
      */
     public Project saveOrUpdateProject(Project project) {
         Project resultProject;
@@ -47,8 +49,9 @@ public class ProjectService {
 
     /**
      * this is the findById method for use with projects based on the unique identifier
+     *
      * @param projectId the project Identifier passed in through the URL
-     * @return  a project object that can be returned in the controller as json
+     * @return a project object that can be returned in the controller as json
      */
     public Project findProjectByIdentifier(String projectId) {
 
@@ -63,5 +66,14 @@ public class ProjectService {
 
         //return the project object
         return project;
+    }
+
+    /**
+     * this can be used by a controller to get a json object that has all the json elements
+     *
+     * @return projects
+     */
+    public Iterable<Project> findAllProjects() {
+        return projectRepository.findAll();
     }
 }
