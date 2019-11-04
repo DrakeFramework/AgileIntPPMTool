@@ -1,0 +1,9 @@
+react is a js library that just makes it easy to quickly make ui
+
+redux provides a way to store the application state like using a JWT token
+redux can pass on token to the back end application by keeping state on the client side
+
+
+
+
+
