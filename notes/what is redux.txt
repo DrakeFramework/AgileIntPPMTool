@@ -71,7 +71,7 @@ found 0 vulnerabilities
 reading on react
 https://www.techiediaries.com/react-ajax/
 
-
+map the state to props
 
 
 

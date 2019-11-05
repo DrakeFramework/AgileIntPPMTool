@@ -9,7 +9,7 @@ import { GET_ERRORS } from "../actions/types";
 const initialState = {};
 
 /**
- * dispatch
+ * dispatch function to get the errors in redux
  * @param {*} state
  * @param {*} action
  */
@@ -22,6 +22,8 @@ export default function(state = initialState, action) {
       //check the index.js file in reducers errors: errorReducer for how to access this
       return action.payload;
     default:
+      //the default state is an empty object
+      //makes sense for the error object when no errors are present
       return state;
   }
 }

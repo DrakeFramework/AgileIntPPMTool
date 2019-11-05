@@ -19,7 +19,8 @@ class AddProject extends Component {
       projectName: "",
       description: "",
       startDate: "",
-      endDate: ""
+      endDate: "",
+      errors: {}
     };
 
     //instead of binding it at every line do it int he constuctor
@@ -27,6 +28,23 @@ class AddProject extends Component {
     //onsubmit must be bound to the form
     this.onSubmit = this.onSubmit.bind(this);
   }
+
+  /**
+   *  //~~~~~//life cycle hooks//~~~~~//
+   * Called when the component may be receiving new props.
+   * React may call this even if props have not changed,
+   * so be sure to compare new and existing props if you only want to handle changes.
+   * @param {*} nextProps
+   */
+  componentWillReceiveProps(nextProps) {
+    //if the parameter has the errors property
+    if (nextProps.errors) {
+      //set the errors property to the current state
+      this.setState({ errors: nextProps.errors });
+    }
+  }
+
+  //page sending features
 
   /**
    * when values are set via initial state on change events are required
@@ -60,16 +78,11 @@ class AddProject extends Component {
     this.props.createProject(newProject, this.props.history);
   }
   render() {
+    //on render set the errors constant to the state
+    const { errors } = this.state;
+
     return (
       <div>
-        {
-          // check name attribute input fields
-          // create constructor
-          // set value on input fields
-          // create onchange function //set onchange on each input field
-          // bind on constructor
-          // check state change in the react extension
-        }
         <div className="project">
           <div className="container">
             <div className="row">
@@ -153,8 +166,15 @@ class AddProject extends Component {
 // //setup the prop types for the action
 AddProject.propTypes = {
   //the create project function is a required function of the proptypes
-  createProject: PropTypes.func.isRequired
+  createProject: PropTypes.func.isRequired,
+  //map the errors object to the props when addproject is going
+  errors: PropTypes.object.isRequired
 };
+
+//create a map from the state in the class to the props in the reducer (reducer/index.js)
+const mapStateToProps = state => ({
+  errors: state.errors
+});
 
 //change the state to use the connector
 //export default AddProject;
@@ -163,6 +183,7 @@ AddProject.propTypes = {
 //TODO replace null with parameters
 //wire the action to the component
 export default connect(
-  null,
+  //add this in
+  mapStateToProps,
   { createProject }
 )(AddProject);
