@@ -14,3 +14,21 @@ check the flowDiagrams for visual representations of the most basic use cases
 4. add to store
 5. get from store
 6. back to 1
+
+install a bunch of stuff for redux
+	-	chrome Redux DevTools plugin
+	- $ npm i redux react-redux redux-thunk
+		- redux is the core redux package
+		+ redux@4.0.4			(4.0.0)
+		- react-redux just as it sounds ties react and redux together
+		+ react-redux@7.1.1  	(5.0.7)
+		- redux-thunk middleware that is used to dispatch reducer actions to the store
+		+ redux-thunk@2.3.0		(2.3.0)
+	- $ npm i axios
+		- install axios 
+		+ axios@0.19.0 			(0.18.0)
+	
+with everything installed wire up store with store.js
+	
+	
+	

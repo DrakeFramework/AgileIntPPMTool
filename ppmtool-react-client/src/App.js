@@ -9,20 +9,35 @@ import "bootstrap/dist/css/bootstrap.min.css";
 //browserrouter
 //this is what we need to bring in for react routing
 //it has two aliases Router and Route  Router is the app.js wrapping and individual routes will be created for each component call
+//note that the router has become the outer wrapping of the app div
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import AddProject from "./components/Project/AddProject";
+/**
+ *the provider allows us to wire up react with redux
+ *note that provider has become the outer wrapping of the app div
+ */
+import { Provider } from "react-redux";
+/**
+ * bring in store.js defined in the src folder  configuration of src is in this file and now the chrome DevTools will display it
+ *
+ * this error will appear until reducers are defined
+ * Store does not have a valid reducer. Make sure the argument passed to combineReducers is an object whose values are reducers.
+ */
+import store from "./store";
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Header />
-        {/*<Dashboard />
-         this allows you to set a path to the add project object*/}
-        <Route exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/addProject" component={AddProject} />
-      </div>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <div className="App">
+          <Header />
+          {/*<Dashboard /> this allows you to set a path to the add project object
+                           use the exact path with route instead to have hard definitions of the path and not wildcard pathing*/}
+          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/addProject" component={AddProject} />
+        </div>
+      </Router>
+    </Provider>
   );
 }
 
