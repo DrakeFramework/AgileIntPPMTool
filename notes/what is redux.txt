@@ -1,0 +1,16 @@
+this project should provide basic use cases for redux (see flow diagram)
+
+redux provides a way to store the application state like using a JWT token
+redux can pass on token to the back end application by keeping state on the client side
+
+
+I think basically it just allows to cache stuff clientside
+
+check the flowDiagrams for visual representations of the most basic use cases
+
+1. create api
+2. create action
+3. create reducer
+4. add to store
+5. get from store
+6. back to 1
