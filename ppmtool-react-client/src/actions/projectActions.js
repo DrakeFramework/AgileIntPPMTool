@@ -5,9 +5,7 @@ import axios from "axios";
 /**
  * import the types to be used
  */
-import { GET_ERRORS } from "./types";
-import { connect } from "http";
-import AddProject from "../components/Project/AddProject";
+import { GET_ERRORS, GET_PROJECTS } from "./types";
 
 /**
  * create var to hold the project es6 constant object def
@@ -47,4 +45,16 @@ export const createProject = (project, history) => async dispatch => {
       payload: err.response.data
     });
   }
+};
+
+/**
+ * basically the same as the post from above but with an axios "get" call which makes it much simpler
+ * TODO research how parameters are passed in axios
+ */
+export const getProjects = () => async dispatch => {
+  const res = await axios.get("http://localhost:8080/api/project/all");
+  dispatch({
+    type: GET_PROJECTS,
+    payload: res.data
+  });
 };

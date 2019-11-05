@@ -6,6 +6,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 //import the action component
 import { createProject } from "../../actions/projectActions";
+//import the new classnames for error handling
+import classnames from "classnames";
 
 class AddProject extends Component {
   //create a constructor so the component can set default values
@@ -79,6 +81,7 @@ class AddProject extends Component {
   }
   render() {
     //on render set the errors constant to the state
+    //accessible from erros.projectName etc
     const { errors } = this.state;
 
     return (
@@ -98,55 +101,94 @@ class AddProject extends Component {
                     {/*check the state in the constructor to get initial value for a field */}
                     {/*on change events are bound with --> onChange={this.onChange.bind(this)}*/}
                     {/*use constructor for onchange*/}
+                    {/*first surround the bootstrap classes with {( xxx )} */}
+                    {/*this is cool because it can check for invalid and sets the browser field error */}
                     <input
                       type="text"
-                      className="form-control form-control-lg "
+                      className={classnames("form-control form-control-lg ", {
+                        "is-invalid": errors.projectName
+                      })}
                       placeholder="Project Name"
                       name="projectName"
                       value={this.state.projectName}
                       onChange={this.onChange}
                     />
+                    {/*add the bootstrap invalid feedback when the errors projectName is there*/}
+                    {errors.projectName && (
+                      <div className="invalid-feedback">
+                        {errors.projectName}
+                      </div>
+                    )}
                   </div>
                   {/* idk why this was disabled */}
                   <div className="form-group">
                     <input
                       type="text"
-                      className="form-control form-control-lg"
+                      className={classnames("form-control form-control-lg ", {
+                        "is-invalid": errors.projectIdentifier
+                      })}
                       placeholder="Unique Project ID"
                       name="projectIdentifier"
                       value={this.state.projectIdentifier}
                       onChange={this.onChange}
                     />
+                    {/*add the bootstrap invalid feedback when the errors projectIdentifier is there*/}
+                    {errors.projectIdentifier && (
+                      <div className="invalid-feedback">
+                        {errors.projectIdentifier}
+                      </div>
+                    )}
                   </div>
                   {/*<!-- disabled for Edit Only!! remove "disabled" for the Create operation -->*/}
                   <div className="form-group">
                     <textarea
-                      className="form-control form-control-lg"
+                      className={classnames("form-control form-control-lg ", {
+                        "is-invalid": errors.description
+                      })}
                       placeholder="Project Description"
                       name="description"
                       onChange={this.onChange}
                       value={this.state.description}
                     ></textarea>
+                    {/*add the bootstrap invalid feedback when the errors projectIdentifier is there*/}
+                    {errors.description && (
+                      <div className="invalid-feedback">
+                        {errors.description}
+                      </div>
+                    )}
                   </div>
                   <h6>Start Date</h6>
                   <div className="form-group">
                     <input
                       type="date"
-                      className="form-control form-control-lg"
+                      className={classnames("form-control form-control-lg ", {
+                        "is-invalid": errors.startDate
+                      })}
                       name="startDate"
                       onChange={this.onChange}
                       value={this.state.startDate}
                     />
+                    {/*add the bootstrap invalid feedback when the errors projectIdentifier is there*/}
+                    {errors.startDate && (
+                      <div className="invalid-feedback">{errors.startDate}</div>
+                    )}
                   </div>
                   <h6>Estimated End Date</h6>
                   <div className="form-group">
                     <input
                       type="date"
+                      className={classnames("form-control form-control-lg ", {
+                        "is-invalid": errors.endDate
+                      })}
                       className="form-control form-control-lg"
                       name="endDate"
                       value={this.state.endDate}
                       onChange={this.onChange}
                     />
+                    {/*add the bootstrap invalid feedback when the errors projectIdentifier is there*/}
+                    {errors.endDate && (
+                      <div className="invalid-feedback">{errors.endDate}</div>
+                    )}
                   </div>
 
                   <input
