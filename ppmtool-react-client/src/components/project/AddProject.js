@@ -1,6 +1,13 @@
 import React, { Component } from "react";
+//the props are used to hold page information properties
+//the router is what passes the props
+import PropTypes from "prop-types";
+//how we connect to the state
+import { connect } from "react-redux";
+//import the action component
+import { createProject } from "../../actions/projectActions";
 
-export default class AddProject extends Component {
+class AddProject extends Component {
   //create a constructor so the component can set default values
   constructor() {
     //constructor of components must call super() so it has the Component constructor functionality
@@ -49,7 +56,8 @@ export default class AddProject extends Component {
       endDate: this.state.endDate
     };
 
-    //
+    //pass the new json object and the history so we can route
+    this.props.createProject(newProject, this.props.history);
   }
   render() {
     return (
@@ -141,3 +149,20 @@ export default class AddProject extends Component {
     );
   }
 }
+
+// //setup the prop types for the action
+AddProject.propTypes = {
+  //the create project function is a required function of the proptypes
+  createProject: PropTypes.func.isRequired
+};
+
+//change the state to use the connector
+//export default AddProject;
+//
+//this allows connecting to the state
+//TODO replace null with parameters
+//wire the action to the component
+export default connect(
+  null,
+  { createProject }
+)(AddProject);
