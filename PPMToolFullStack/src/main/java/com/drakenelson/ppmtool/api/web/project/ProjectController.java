@@ -30,6 +30,7 @@ import javax.validation.Valid;
 @RequestMapping("/api/project")
 @Controller
 @Scope("request")
+//cross origin allows interaction between servers
 @CrossOrigin
 @Data
 public class ProjectController {

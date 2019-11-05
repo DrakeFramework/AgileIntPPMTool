@@ -19,7 +19,22 @@ export const createProject = (project, history) => async dispatch => {
   try {
     //res is server response
     //take the history parameter from the component and push the dashboard to see the new render
+    //await makes it a promise
     const res = await axios.post("http://localhost:8080/api/project", project);
+    // i will stick with his axios for now to learn new stuff but I think i still prefer jquery
+    // await $.postJSON(
+    //   "http://localhost:8080/api/project",
+    //   project,
+    //   function(data) {
+    //      history.push("/dashboard");
+    //   },
+    //   function(xhr, textStatus, errorThrown) {
+    //      dispatch({
+    //        type: GET_ERRORS,
+    //        payload: JSON.parse(xhr.responseText)
+    //      });
+    //   }
+    // );
     history.push("/dashboard");
   } catch (err) {
     //if there is an error

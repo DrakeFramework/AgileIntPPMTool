@@ -68,6 +68,9 @@ npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@
 added 5 packages from 8 contributors and audited 905001 packages in 19.374s
 found 0 vulnerabilities
 
+reading on react
+https://www.techiediaries.com/react-ajax/
+
 
 
 

@@ -24,6 +24,24 @@ import { Provider } from "react-redux";
  * Store does not have a valid reducer. Make sure the argument passed to combineReducers is an object whose values are reducers.
  */
 import store from "./store";
+//jquery
+import $ from "jquery";
+
+//this is a template method i like to use for my jquery ajax calls
+$.postJSON = function(url, data, callback, err) {
+  return $.ajax({
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    type: "POST",
+    url: url,
+    data: JSON.stringify(data),
+    dataType: "json",
+    success: callback,
+    error: err
+  });
+};
 
 function App() {
   return (

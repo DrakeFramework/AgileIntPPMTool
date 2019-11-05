@@ -60,6 +60,8 @@ public class Project {
     @PrePersist
     protected void onCreate() {
         this.createdAt = new Date();
+        //to me it makes sense to have this set
+        this.updatedAt = new Date();
     }
 
     @PreUpdate
