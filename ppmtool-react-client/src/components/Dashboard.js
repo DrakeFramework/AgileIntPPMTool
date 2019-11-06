@@ -16,6 +16,18 @@ class Dashboard extends Component {
   }
 
   render() {
+    //###### example #######
+    // create a project object from props
+    // const projectObject = {
+    //   projectName: "ProjectName PROPS",
+    //   projectIdentifier: "IDPRO",
+    //   description: "Discription coming from props"
+    // };
+    // #####################
+
+    //get the projects list from props and map it onto the dashboard component
+    const projects = this.props.project.projects;
+
     //  <!-- Dashboard Component -->
     return (
       <div className="projects">
@@ -29,7 +41,14 @@ class Dashboard extends Component {
               <br />
               <hr />
               {/* route to the project item */}
-              <ProjectItem />
+              {/*<ProjectItem />*/}
+              {/* we want to pass props from dashboard to the project item so we can add them to state and display */}
+              {/* pull project from props */}
+              {/*<ProjectItem project={projectObject} />*/}
+              {projects.map(project => (
+                //add a key to the map using the actual database id
+                <ProjectItem key={project.id} project={project} />
+              ))}
             </div>
           </div>
         </div>
@@ -40,12 +59,14 @@ class Dashboard extends Component {
 
 //set the properties
 Dashboard.propTypes = {
+  //these allow us to map project state to properties (react -> redux)
   project: PropTypes.object.isRequired,
   getProjects: PropTypes.func.isRequired
 };
 
 //map it up to the project in index.js
 const mapStateToProps = state => ({
+  //these allow us to map project properties to state (redux -> react)
   project: state.project
 });
 

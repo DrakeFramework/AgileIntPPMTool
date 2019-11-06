@@ -53,6 +53,7 @@ public class Project {
     @JsonFormat(pattern="yyyy-mm-dd")
     private Date endDate;
     @JsonFormat(pattern="yyyy-mm-dd")
+    @Column(updatable = false)
     private Date createdAt;
     @JsonFormat(pattern="yyyy-mm-dd")
     private Date updatedAt;
@@ -61,7 +62,7 @@ public class Project {
     protected void onCreate() {
         this.createdAt = new Date();
         //to me it makes sense to have this set
-        this.updatedAt = new Date();
+        this.updatedAt = createdAt;
     }
 
     @PreUpdate
