@@ -65,7 +65,8 @@ $ npm install react-router-dom
 hopefully i can pull this
 should be fun
 
-
+documentation for props in react
+https://reactjs.org/docs/components-and-props.html
 
 
 
