@@ -36,6 +36,11 @@ export const createProject = (project, history) => async dispatch => {
     //await makes it a promise
     const res = await axios.post("http://localhost:8080/api/project", project);
     history.push("/dashboard");
+    //when we have a good post without exception then just wipe out the errors
+    dispatch({
+      type: GET_ERRORS,
+      payload: {}
+    });
   } catch (err) {
     //if there is an error
     //dispatch to GET_ERRORS reducer
@@ -64,17 +69,14 @@ export const getProjects = () => async dispatch => {
  * this time take the id and history so we can control route on errors
  */
 export const getProject = (id, history) => async dispatch => {
-  // try {
-  //use backticks so we can map the id parameter onto the link
-  const res = await axios.get(`http://localhost:8080/api/project/${id}`);
-  dispatch({
-    type: GET_PROJECT,
-    payload: res.data
-  });
-  // } catch (err) {
-  //   dispatch({
-  //     type: GET_ERRORS,
-  //     payload: err.response.data
-  //   });
-  // }
+  try {
+    //use backticks so we can map the id parameter onto the link
+    const res = await axios.get(`http://localhost:8080/api/project/${id}`);
+    dispatch({
+      type: GET_PROJECT,
+      payload: res.data
+    });
+  } catch (err) {
+    history.push("/dashboard");
+  }
 };

@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 //get the classnames  package for form validation (error fields)
 import classnames from "classnames";
+import $ from "jquery";
 
 //rcc tab to auto create and then separate out the export
 //this component has to fetch and then route to update
@@ -21,7 +22,8 @@ class UpdateProject extends Component {
       projectName: "",
       description: "",
       startDate: "",
-      endDate: ""
+      endDate: "",
+      errors: {}
     };
     //bind the event
     this.onChange = this.onChange.bind(this);
@@ -31,6 +33,10 @@ class UpdateProject extends Component {
 
   //add life cycle hook for mounting the state
   componentWillReceiveProps(nextProps) {
+    //if the parameter has the errors property
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
     //create a const for the new props
     const {
       id,
@@ -40,6 +46,7 @@ class UpdateProject extends Component {
       startDate,
       endDate
     } = nextProps.project;
+
     //set the current state to the new props
     this.setState({
       id,
@@ -49,6 +56,7 @@ class UpdateProject extends Component {
       startDate,
       endDate
     });
+    // }
   }
 
   //add the life cycle hook
@@ -82,6 +90,9 @@ class UpdateProject extends Component {
   }
 
   render() {
+    //get the errors from the state
+    const { errors } = this.state;
+
     return (
       <div className="project">
         <div className="container">
@@ -95,52 +106,80 @@ class UpdateProject extends Component {
                   {/* this is wired from state to value of the field for updating */}
                   <input
                     type="text"
-                    className="form-control form-control-lg "
+                    className={classnames("form-control form-control-lg ", {
+                      "is-invalid": errors.projectName
+                    })}
                     placeholder="Project Name"
                     name="projectName"
                     value={this.state.projectName}
                     onChange={this.onChange}
                   />
+                  {/* if the project name exists then create this div this is the classnames package usage syntax*/}
+                  {errors.projectName && (
+                    <div className="invalid-feedback">{errors.projectName}</div>
+                  )}
                 </div>
                 <div className="form-group">
                   <input
                     type="text"
-                    className="form-control form-control-lg"
+                    className={classnames("form-control form-control-lg ", {
+                      "is-invalid": errors.projectIdentifier
+                    })}
                     placeholder="Unique Project ID"
                     disabled
                     name="projectIdentifier"
                     value={this.state.projectIdentifier}
                   />
+                  {errors.projectIdentifier && (
+                    <div className="invalid-feedback">
+                      {errors.projectIdentifier}
+                    </div>
+                  )}
                 </div>
                 {/*<!-- disabled for Edit Only!! remove "disabled" for the Create operation -->*/}
                 <div className="form-group">
                   <textarea
-                    className="form-control form-control-lg"
+                    className={classnames("form-control form-control-lg ", {
+                      "is-invalid": errors.description
+                    })}
                     placeholder="Project Description"
                     name="description"
                     value={this.state.description}
                     onChange={this.onChange}
                   ></textarea>
+                  {errors.description && (
+                    <div className="invalid-feedback">{errors.description}</div>
+                  )}
                 </div>
                 <h6>Start Date</h6>
                 <div className="form-group">
                   <input
                     type="date"
-                    className="form-control form-control-lg"
+                    className={classnames("form-control form-control-lg ", {
+                      "is-invalid": errors.startDate
+                    })}
                     name="startDate"
                     value={this.state.startDate}
                     onChange={this.onChange}
                   />
+                  {errors.startDate && (
+                    <div className="invalid-feedback">{errors.startDate}</div>
+                  )}
                 </div>
                 <h6>Estimated End Date</h6>
                 <div className="form-group">
                   <input
                     type="date"
-                    className="form-control form-control-lg"
+                    className={classnames("form-control form-control-lg ", {
+                      "is-invalid": errors.endDate
+                    })}
                     name="endDate"
                     value={this.state.endDate}
                     onChange={this.onChange}
                   />
+                  {errors.endDate && (
+                    <div className="invalid-feedback">{errors.endDate}</div>
+                  )}
                 </div>
 
                 <input
@@ -161,12 +200,15 @@ UpdateProject.propTypes = {
   //get project function mapped to proptype
   getProject: PropTypes.func.isRequired,
   createProject: PropTypes.func.isRequired,
-  project: PropTypes.object.isRequired
+  project: PropTypes.object.isRequired,
+  //map the errors object to the props when addproject is going
+  errors: PropTypes.object.isRequired
 };
 
 //map the state to props
 const mapStateToProps = state => ({
-  project: state.project.project
+  project: state.project.project,
+  errors: state.errors
 });
 
 //connect to getProject
