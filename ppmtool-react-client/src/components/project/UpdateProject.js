@@ -1,7 +1,25 @@
 import React, { Component } from "react";
+//import the get project action to fill out the data
+import { getProject } from "../../actions/projectActions";
+//get the proptypes package to handle props
+import PropTypes from "prop-types";
+//get connect from react redux so we can wire routes
+import { connect } from "react-redux";
+//get the classnames  package for form validation (error fields)
+import classnames from "classnames";
 
 //rcc tab to auto create and then separate out the export
+//this component has to fetch and then route to update
 class UpdateProject extends Component {
+  //add the life cycle hook
+  componentDidMount() {
+    //extract the id from the params passed in through the "get" api call for fetch
+    const { id } = this.props.match.params;
+    //pass the id from fetch and the history into the getProject
+    //now we can see our project object in the state (redux)
+    this.props.getProject(id, this.props.history);
+  }
+
   render() {
     return (
       <div className="project">
@@ -63,4 +81,20 @@ class UpdateProject extends Component {
   }
 }
 
-export default UpdateProject;
+//add proptypes
+UpdateProject.propTypes = {
+  //get project function mapped to proptype
+  getProject: PropTypes.func.isRequired,
+  project: PropTypes.object.isRequired
+};
+
+//map the state to props
+const mapStateToProps = state => ({
+  project: state.project.project
+});
+
+//connect to getProject
+export default connect(
+  mapStateToProps,
+  { getProject }
+)(UpdateProject);

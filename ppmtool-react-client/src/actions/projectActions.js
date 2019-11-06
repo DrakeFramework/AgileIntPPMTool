@@ -5,7 +5,7 @@ import axios from "axios";
 /**
  * import the types to be used
  */
-import { GET_ERRORS, GET_PROJECTS } from "./types";
+import { GET_ERRORS, GET_PROJECTS, GET_PROJECT } from "./types";
 
 /**
  * create var to hold the project es6 constant object def
@@ -57,4 +57,24 @@ export const getProjects = () => async dispatch => {
     type: GET_PROJECTS,
     payload: res.data
   });
+};
+
+/**
+ * get a single fetch of project in the same pattern
+ * this time take the id and history so we can control route on errors
+ */
+export const getProject = (id, history) => async dispatch => {
+  // try {
+  //use backticks so we can map the id parameter onto the link
+  const res = await axios.get(`http://localhost:8080/api/project/${id}`);
+  dispatch({
+    type: GET_PROJECT,
+    payload: res.data
+  });
+  // } catch (err) {
+  //   dispatch({
+  //     type: GET_ERRORS,
+  //     payload: err.response.data
+  //   });
+  // }
 };
