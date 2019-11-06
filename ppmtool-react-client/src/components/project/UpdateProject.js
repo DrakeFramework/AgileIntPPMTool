@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 //import the get project action to fill out the data
-import { getProject } from "../../actions/projectActions";
+import { getProject, createProject } from "../../actions/projectActions";
 //get the proptypes package to handle props
 import PropTypes from "prop-types";
 //get connect from react redux so we can wire routes
@@ -11,6 +11,46 @@ import classnames from "classnames";
 //rcc tab to auto create and then separate out the export
 //this component has to fetch and then route to update
 class UpdateProject extends Component {
+  // set the state
+  //create constructor
+  constructor() {
+    super();
+    this.state = {
+      id: "",
+      projectIdentifier: "",
+      projectName: "",
+      description: "",
+      startDate: "",
+      endDate: ""
+    };
+    //bind the event
+    this.onChange = this.onChange.bind(this);
+    //bind the submit
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  //add life cycle hook for mounting the state
+  componentWillReceiveProps(nextProps) {
+    //create a const for the new props
+    const {
+      id,
+      projectIdentifier,
+      projectName,
+      description,
+      startDate,
+      endDate
+    } = nextProps.project;
+    //set the current state to the new props
+    this.setState({
+      id,
+      projectIdentifier,
+      projectName,
+      description,
+      startDate,
+      endDate
+    });
+  }
+
   //add the life cycle hook
   componentDidMount() {
     //extract the id from the params passed in through the "get" api call for fetch
@@ -18,6 +58,27 @@ class UpdateProject extends Component {
     //pass the id from fetch and the history into the getProject
     //now we can see our project object in the state (redux)
     this.props.getProject(id, this.props.history);
+  }
+
+  //on change event
+  onChange(e) {
+    //use the naming convention to wire it up
+    this.setState({ [e.target.name]: e.target.value });
+    //
+  }
+  //submit event
+  onSubmit(e) {
+    e.preventDefault();
+    const updateProject = {
+      id: this.state.id,
+      projectIdentifier: this.state.projectIdentifier,
+      projectName: this.state.projectName,
+      description: this.state.description,
+      startDate: this.state.startDate,
+      endDate: this.state.endDate
+    };
+    //pass on to createproject function
+    this.props.createProject(updateProject, this.props.history);
   }
 
   render() {
@@ -28,12 +89,17 @@ class UpdateProject extends Component {
             <div className="col-md-8 m-auto">
               <h5 className="display-4 text-center">Update Project form</h5>
               <hr />
-              <form>
+              {/* bind  */}
+              <form onSubmit={this.onSubmit}>
                 <div className="form-group">
+                  {/* this is wired from state to value of the field for updating */}
                   <input
                     type="text"
                     className="form-control form-control-lg "
                     placeholder="Project Name"
+                    name="projectName"
+                    value={this.state.projectName}
+                    onChange={this.onChange}
                   />
                 </div>
                 <div className="form-group">
@@ -42,6 +108,8 @@ class UpdateProject extends Component {
                     className="form-control form-control-lg"
                     placeholder="Unique Project ID"
                     disabled
+                    name="projectIdentifier"
+                    value={this.state.projectIdentifier}
                   />
                 </div>
                 {/*<!-- disabled for Edit Only!! remove "disabled" for the Create operation -->*/}
@@ -49,6 +117,9 @@ class UpdateProject extends Component {
                   <textarea
                     className="form-control form-control-lg"
                     placeholder="Project Description"
+                    name="description"
+                    value={this.state.description}
+                    onChange={this.onChange}
                   ></textarea>
                 </div>
                 <h6>Start Date</h6>
@@ -56,7 +127,9 @@ class UpdateProject extends Component {
                   <input
                     type="date"
                     className="form-control form-control-lg"
-                    name="start_date"
+                    name="startDate"
+                    value={this.state.startDate}
+                    onChange={this.onChange}
                   />
                 </div>
                 <h6>Estimated End Date</h6>
@@ -64,7 +137,9 @@ class UpdateProject extends Component {
                   <input
                     type="date"
                     className="form-control form-control-lg"
-                    name="end_date"
+                    name="endDate"
+                    value={this.state.endDate}
+                    onChange={this.onChange}
                   />
                 </div>
 
@@ -85,6 +160,7 @@ class UpdateProject extends Component {
 UpdateProject.propTypes = {
   //get project function mapped to proptype
   getProject: PropTypes.func.isRequired,
+  createProject: PropTypes.func.isRequired,
   project: PropTypes.object.isRequired
 };
 
@@ -96,5 +172,5 @@ const mapStateToProps = state => ({
 //connect to getProject
 export default connect(
   mapStateToProps,
-  { getProject }
+  { getProject, createProject }
 )(UpdateProject);
