@@ -12,6 +12,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 //note that the router has become the outer wrapping of the app div
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import AddProject from "./components/Project/AddProject";
+import UpdateProject from "./components/Project/UpdateProject";
+
 /**
  *the provider allows us to wire up react with redux
  *note that provider has become the outer wrapping of the app div
@@ -50,9 +52,12 @@ function App() {
         <div className="App">
           <Header />
           {/*<Dashboard /> this allows you to set a path to the add project object
-                           use the exact path with route instead to have hard definitions of the path and not wildcard pathing*/}
+                           use the exact path with route instead to have hard definitions of the path and not wildcard pathing
+              the route component is the element and the props can pass with the state*/}
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/addProject" component={AddProject} />
+          {/* the :id allows param named id to be passed to the route */}
+          <Route exact path="/updateProject/:id" component={UpdateProject} />
         </div>
       </Router>
     </Provider>
