@@ -16,7 +16,7 @@ import { GET_ERRORS, GET_PROJECTS, GET_PROJECT, DELETE_PROJECT } from "./types";
 export const createProject = (project, history) => async dispatch => {
   // i will stick with his axios for now to learn new stuff but I think i still prefer jquery
   // await $.postJSON(
-  //   "http://localhost:8080/api/project",
+  //   "/api/project",
   //   project,
   //   function(data) {
   //      history.push("/dashboard");
@@ -35,7 +35,7 @@ export const createProject = (project, history) => async dispatch => {
     //take the history parameter from the component and push the dashboard to see the new render
     //await makes it a promise
     //don't care about responseconst res =
-    await axios.post("http://localhost:8080/api/project", project);
+    await axios.post("/api/project", project);
     history.push("/dashboard");
     //when we have a good post without exception then just wipe out the errors
     dispatch({
@@ -58,7 +58,7 @@ export const createProject = (project, history) => async dispatch => {
  * TODO research how parameters are passed in axios
  */
 export const getProjects = () => async dispatch => {
-  const res = await axios.get("http://localhost:8080/api/project/all");
+  const res = await axios.get("/api/project/all");
   dispatch({
     type: GET_PROJECTS,
     payload: res.data
@@ -72,7 +72,7 @@ export const getProjects = () => async dispatch => {
 export const getProject = (id, history) => async dispatch => {
   try {
     //use backticks so we can map the id parameter onto the link
-    const res = await axios.get(`http://localhost:8080/api/project/${id}`);
+    const res = await axios.get(`/api/project/${id}`);
     dispatch({
       type: GET_PROJECT,
       payload: res.data
@@ -88,12 +88,15 @@ export const getProject = (id, history) => async dispatch => {
  * because
  */
 export const deleteProject = id => async dispatch => {
-  // removed because don't care about responseconst res =
-  await axios.delete(`http://localhost:8080/api/project/${id}`);
-  dispatch({
-    type: DELETE_PROJECT,
-    //change this from res.data to id in order to use the filter in the reducer
-    // payload: res.data because it was changed from res to the id it just passes id to reducer
-    payload: id
-  });
+  //add a confirmation to the delete
+  if (window.confirm("DELETE Seriously???")) {
+    // removed because don't care about responseconst res =
+    await axios.delete(`/api/project/${id}`);
+    dispatch({
+      type: DELETE_PROJECT,
+      //change this from res.data to id in order to use the filter in the reducer
+      // payload: res.data because it was changed from res to the id it just passes id to reducer
+      payload: id
+    });
+  }
 };
