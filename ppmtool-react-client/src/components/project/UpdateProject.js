@@ -7,7 +7,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 //get the classnames  package for form validation (error fields)
 import classnames from "classnames";
-import $ from "jquery";
 
 //rcc tab to auto create and then separate out the export
 //this component has to fetch and then route to update
@@ -38,7 +37,8 @@ class UpdateProject extends Component {
       this.setState({ errors: nextProps.errors });
     }
     //create a const for the new props
-    const {
+    //change to var because i need to perform logic on the date fields for nullables
+    var {
       id,
       projectIdentifier,
       projectName,
@@ -46,6 +46,14 @@ class UpdateProject extends Component {
       startDate,
       endDate
     } = nextProps.project;
+
+    //handle null pointers
+    if (!startDate) {
+      startDate = "";
+    }
+    if (!endDate) {
+      endDate = "";
+    }
 
     //set the current state to the new props
     this.setState({

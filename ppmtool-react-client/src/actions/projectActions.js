@@ -5,7 +5,7 @@ import axios from "axios";
 /**
  * import the types to be used
  */
-import { GET_ERRORS, GET_PROJECTS, GET_PROJECT } from "./types";
+import { GET_ERRORS, GET_PROJECTS, GET_PROJECT, DELETE_PROJECT } from "./types";
 
 /**
  * create var to hold the project es6 constant object def
@@ -34,7 +34,8 @@ export const createProject = (project, history) => async dispatch => {
     //res is server response
     //take the history parameter from the component and push the dashboard to see the new render
     //await makes it a promise
-    const res = await axios.post("http://localhost:8080/api/project", project);
+    //don't care about responseconst res =
+    await axios.post("http://localhost:8080/api/project", project);
     history.push("/dashboard");
     //when we have a good post without exception then just wipe out the errors
     dispatch({
@@ -79,4 +80,20 @@ export const getProject = (id, history) => async dispatch => {
   } catch (err) {
     history.push("/dashboard");
   }
+};
+
+/**
+ * delete a project
+ * because it's deleted from a list we can trust that it exists
+ * because
+ */
+export const deleteProject = id => async dispatch => {
+  // removed because don't care about responseconst res =
+  await axios.delete(`http://localhost:8080/api/project/${id}`);
+  dispatch({
+    type: DELETE_PROJECT,
+    //change this from res.data to id in order to use the filter in the reducer
+    // payload: res.data because it was changed from res to the id it just passes id to reducer
+    payload: id
+  });
 };

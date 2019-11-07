@@ -69,7 +69,15 @@ documentation for props in react
 https://reactjs.org/docs/components-and-props.html
 
 
-
+workflow
+add types.js
+add case to project reducer.js
+add route to project action
+add connect function to projectItem.js
+add proptypes to projectItem.js
+add function to call action
+add link to button on projectItem.js
+add map to prop types to projectItem.js
 
 
 

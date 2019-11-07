@@ -1,4 +1,4 @@
-import { GET_PROJECTS, GET_PROJECT } from "../actions/types";
+import { GET_PROJECTS, GET_PROJECT, DELETE_PROJECT } from "../actions/types";
 
 //an array of projects and a single project in the def of the state
 const initialState = {
@@ -21,6 +21,16 @@ export default function(state = initialState, action) {
       return {
         ...state,
         project: action.payload
+      };
+    //Return a fresh list of projects
+    //rather than returning the response from the server we can just return the updated state
+    case DELETE_PROJECT:
+      return {
+        ...state,
+        //filter out the object where id === payload passed from the action
+        projects: state.projects.filter(
+          project => project.projectIdentifier !== action.payload
+        )
       };
     default:
       return state;
