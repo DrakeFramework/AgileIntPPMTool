@@ -11,8 +11,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 //it has two aliases Router and Route  Router is the app.js wrapping and individual routes will be created for each component call
 //note that the router has become the outer wrapping of the app div
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import AddProject from "./components/Project/AddProject";
-import UpdateProject from "./components/Project/UpdateProject";
+import AddProject from "./components/project/AddProject";
+import UpdateProject from "./components/project/UpdateProject";
 
 /**
  *the provider allows us to wire up react with redux

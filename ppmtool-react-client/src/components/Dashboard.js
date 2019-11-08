@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import ProjectItem from "./Project/ProjectItem";
-import CreateProjectButton from "./Project/CreateProjectButton";
+import ProjectItem from "./project/ProjectItem";
+import CreateProjectButton from "./project/CreateProjectButton";
 //import the conector for provider
 import { connect } from "react-redux";
 //import the get projects reducer
